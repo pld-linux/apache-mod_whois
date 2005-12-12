@@ -46,4 +46,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE README
 %attr(755,root,root) %{_pkglibdir}/*.so
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/httpd.conf/*.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf/*.conf

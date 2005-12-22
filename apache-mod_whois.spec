@@ -4,7 +4,7 @@ Summary:	Apache module: WHOIS->WEB gateway
 Summary(pl):	Modu³ Apache'a: bramka WHOIS->WWW
 Name:		apache-mod_%{mod_name}
 Version:	0.1
-Release:	2
+Release:	3
 License:	distributable
 Group:		Networking/Daemons
 Source0:	http://dl.sourceforge.net/modwhois/mod_%{mod_name}-%{version}.tar.gz
@@ -12,13 +12,13 @@ Source0:	http://dl.sourceforge.net/modwhois/mod_%{mod_name}-%{version}.tar.gz
 Source1:	%{name}.conf
 URL:		http://modwhois.sourceforge.net/
 BuildRequires:	%{apxs}
-BuildRequires:	apache-devel >= 2.0.0
-Requires(post,preun):	%{apxs}
-Requires:	apache
+BuildRequires:	apache-devel >= 2.0
+Requires:	apache(modules-api) = %apache_modules_api
+Requires:	apache >= 2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_sysconfdir	%(%{apxs} -q SYSCONFDIR)
-%define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
+%define		_pkglibdir	%(%{apxs} -q LIBEXECDIR 2>/dev/null)
+%define		_sysconfdir	%(%{apxs} -q SYSCONFDIR 2>/dev/null)
 
 %description
 Apache module: WHOIS->WEB gateway.
@@ -41,6 +41,18 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf/83_mod-whois.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+if [ -f /var/lock/subsys/httpd ]; then
+	/etc/rc.d/init.d/httpd restart 1>&2
+fi
+
+%postun
+if [ "$1" = "0" ]; then
+	if [ -f /var/lock/subsys/httpd ]; then
+		/etc/rc.d/init.d/httpd restart 1>&2
+	fi
+fi
 
 %files
 %defattr(644,root,root,755)

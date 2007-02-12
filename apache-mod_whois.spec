@@ -1,7 +1,7 @@
 %define		mod_name	whois
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: WHOIS->WEB gateway
-Summary(pl):	Modu³ Apache'a: bramka WHOIS->WWW
+Summary(pl.UTF-8):   ModuÅ‚ Apache'a: bramka WHOIS->WWW
 Name:		apache-mod_%{mod_name}
 Version:	0.1
 Release:	3
@@ -23,8 +23,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Apache module: WHOIS->WEB gateway.
 
-%description -l pl
-Modu³ Apache'a: bramka WHOIS->WWW.
+%description -l pl.UTF-8
+ModuÅ‚ Apache'a: bramka WHOIS->WWW.
 
 %prep
 %setup -q -n mod_%{mod_name}

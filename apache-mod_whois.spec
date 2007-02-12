@@ -1,7 +1,7 @@
 %define		mod_name	whois
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: WHOIS->WEB gateway
-Summary(pl.UTF-8):   Moduł Apache'a: bramka WHOIS->WWW
+Summary(pl.UTF-8):	Moduł Apache'a: bramka WHOIS->WWW
 Name:		apache-mod_%{mod_name}
 Version:	0.1
 Release:	3

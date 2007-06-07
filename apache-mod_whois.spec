@@ -11,7 +11,7 @@ Source0:	http://dl.sourceforge.net/modwhois/mod_%{mod_name}-%{version}.tar.gz
 # Source0-md5:	8b4f29868c221b2d54f59b7a0c090698
 Source1:	%{name}.conf
 URL:		http://modwhois.sourceforge.net/
-BuildRequires:	%{apxs}
+BuildRequires:	apache-apxs >= 2.0
 BuildRequires:	apache-devel >= 2.0
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	apache(modules-api) = %apache_modules_api

@@ -6,7 +6,7 @@ Name:		apache-mod_%{mod_name}
 Version:	0.1
 Release:	3
 License:	distributable
-Group:		Networking/Daemons
+Group:		Networking/Daemons/HTTP
 Source0:	http://dl.sourceforge.net/modwhois/mod_%{mod_name}-%{version}.tar.gz
 # Source0-md5:	8b4f29868c221b2d54f59b7a0c090698
 Source1:	%{name}.conf

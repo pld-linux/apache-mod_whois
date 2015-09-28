@@ -4,12 +4,13 @@ Summary:	Apache module: WHOIS->WEB gateway
 Summary(pl.UTF-8):	Moduł Apache'a: bramka WHOIS->WWW
 Name:		apache-mod_%{mod_name}
 Version:	0.1
-Release:	3
+Release:	4
 License:	distributable
 Group:		Networking/Daemons/HTTP
 Source0:	http://dl.sourceforge.net/modwhois/mod_%{mod_name}-%{version}.tar.gz
 # Source0-md5:	8b4f29868c221b2d54f59b7a0c090698
 Source1:	%{name}.conf
+Patch0:		%{name}-epp_server.patch
 URL:		http://modwhois.sourceforge.net/
 BuildRequires:	%{apxs}
 BuildRequires:	apache-devel >= 2.0
@@ -28,6 +29,7 @@ Moduł Apache'a: bramka WHOIS->WWW.
 
 %prep
 %setup -q -n mod_%{mod_name}
+%patch0 -p1
 
 %build
 %{apxs} -c mod_%{mod_name}.c

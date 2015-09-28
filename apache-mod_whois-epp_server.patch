@@ -1,0 +1,25 @@
+--- ./mod_whois.c.org	2015-09-28 10:14:20.053113205 +0200
++++ ./mod_whois.c	2015-09-28 10:16:24.859605173 +0200
+@@ -31,7 +31,7 @@ module AP_MODULE_DECLARE_DATA whois_modu
+ 
+ typedef struct whois_conn_rec {
+         int whois_on;
+-        char *whois_prefix;
++        const char *whois_prefix;
+ } whois_conn_rec;
+ 
+ 
+@@ -69,7 +69,7 @@ apr_status_t whois_input_filter(ap_filte
+ 	const char *original;
+ 	char *quoted;
+ 	char *crlfpos;
+-	int len;
++	apr_size_t len;
+ 	
+ 	if (mode != AP_MODE_GETLINE) {
+ 		return ap_get_brigade(f->next, b, mode, block, readbytes);
+@@ -163,4 +163,3 @@ module AP_MODULE_DECLARE_DATA whois_modu
+ 	whois_cmds,
+ 	register_hooks
+ };
+-
